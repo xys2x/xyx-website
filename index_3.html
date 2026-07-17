@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XYX Studio — Websites &amp; Booking Systems</title>
+<meta name="description" content="XYX Studio — custom websites, booking systems and online stores for businesses. Based in the Azores.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Oswald:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#edebe4;
+    --bone-2:#e4e2d9;
+    --ink:#3c3b37;
+    --ink-soft:#6b6a63;
+    --line:#3c3b37;
+    --white:#f7f6f1;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Archivo', -apple-system, sans-serif;
+    background:var(--bone);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1140px; margin:0 auto; padding:0 24px;}
+  section{padding:96px 0;}
+
+  .display{
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.005em;
+    line-height:1.04;
+  }
+  .serif{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:500;
+    text-transform:none;
+    letter-spacing:0;
+  }
+  .spark{font-family:serif;}
+
+  /* Nav */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(237,235,228,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1.5px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px;
+    max-width:1140px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Oswald', sans-serif;
+    font-size:1.35rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .brand span{font-weight:300;}
+  .nav-links{display:flex; gap:34px; align-items:center;}
+  .nav-links a{
+    font-size:0.8rem; font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--ink);
+    border-bottom:1.5px solid transparent;
+    padding-bottom:2px;
+    transition:border-color .2s;
+  }
+  .nav-links a:hover{border-color:var(--ink);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    padding:13px 28px;
+    border-radius:999px;
+    border:1.5px solid var(--ink);
+    font-size:0.8rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    transition:background .2s, color .2s, transform .2s;
+    cursor:pointer;
+    background:transparent;
+    color:var(--ink);
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--ink); color:var(--bone);}
+  .btn-solid:hover{background:#2b2a27;}
+  .btn-sm{padding:10px 20px; font-size:0.72rem;}
+  .mobile-toggle{display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--ink);}
+
+  /* Hero */
+  .hero{
+    padding:110px 0 90px;
+    border-bottom:1.5px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.5fr 0.5fr;
+    gap:40px;
+    align-items:stretch;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6.5vw, 4.6rem);
+    margin-bottom:34px;
+  }
+  .hero h1 .pov{font-weight:600;}
+  .hero .lede{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:clamp(1.5rem, 3vw, 2.2rem);
+    line-height:1.3;
+    margin-bottom:44px;
+    max-width:640px;
+  }
+  .hero-cta{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .hero-side{
+    border:1.5px solid var(--line);
+    border-radius:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    min-height:420px;
+  }
+  .hero-side .vertical{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:clamp(1.8rem, 3vw, 2.6rem);
+    writing-mode:vertical-rl;
+    white-space:nowrap;
+  }
+  .hero-side .spark-mark{
+    position:absolute;
+    font-size:1.6rem;
+    line-height:1;
+  }
+  .hero-side .s1{top:-14px; left:50%; transform:translateX(-50%); background:var(--bone); padding:0 8px;}
+  .hero-side .s2{bottom:60px; left:-14px; background:var(--bone); padding:8px 0;}
+  .eyebrow{
+    display:inline-block;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    border:1.5px solid var(--line);
+    border-radius:999px;
+    padding:8px 20px;
+    margin-bottom:38px;
+  }
+
+  /* Ticker */
+  .ticker{
+    border-bottom:1.5px solid var(--line);
+    padding:16px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .ticker-inner{
+    display:inline-block;
+    animation:ticker 28s linear infinite;
+    font-family:'Oswald', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.9rem;
+  }
+  .ticker-inner .spark{margin:0 22px;}
+  @keyframes ticker{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* Section heads */
+  .section-head{margin-bottom:60px;}
+  .kicker{
+    display:flex; align-items:center; gap:14px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .kicker::before{content:"✦"; font-size:0.9rem; color:var(--ink);}
+  .section-head h2{
+    font-size:clamp(2rem, 4.5vw, 3.2rem);
+    max-width:720px;
+  }
+  .section-head h2 .serif{font-size:1.05em;}
+
+  /* Services */
+  .services{border-bottom:1.5px solid var(--line); padding-top:88px;}
+  .service-list{border-top:1.5px solid var(--line);}
+  .service-item{
+    display:grid;
+    grid-template-columns:70px 1.1fr 1.6fr;
+    gap:28px;
+    padding:34px 0;
+    border-bottom:1.5px solid var(--line);
+    align-items:start;
+  }
+  .service-item .num{
+    font-family:'Oswald', sans-serif;
+    font-weight:300;
+    font-size:1.05rem;
+    padding-top:6px;
+  }
+  .service-item h3{
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    text-transform:uppercase;
+    font-size:1.45rem;
+    line-height:1.15;
+  }
+  .service-item h3 .note{
+    display:block;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    text-transform:none;
+    font-weight:500;
+    font-size:0.95rem;
+    margin-top:6px;
+    color:var(--ink-soft);
+  }
+  .service-item p{color:var(--ink-soft); font-size:0.98rem; max-width:560px;}
+  .service-item p strong{color:var(--ink); font-weight:600;}
+
+  /* Why */
+  .why{border-bottom:1.5px solid var(--line);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:0;
+    border:1.5px solid var(--line);
+    border-radius:36px;
+    overflow:hidden;
+  }
+  .why-item{
+    padding:38px 36px;
+    border-bottom:1.5px solid var(--line);
+  }
+  .why-item:nth-child(odd){border-right:1.5px solid var(--line);}
+  .why-item:nth-last-child(-n+2){border-bottom:none;}
+  .why-item h4{
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    text-transform:uppercase;
+    font-size:1.1rem;
+    margin-bottom:8px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .why-item h4::before{content:"✦"; font-size:0.8rem;}
+  .why-item p{color:var(--ink-soft); font-size:0.95rem;}
+
+  /* Work */
+  .work{border-bottom:1.5px solid var(--line);}
+  .work-card{
+    border:1.5px solid var(--line);
+    border-radius:36px;
+    overflow:hidden;
+    max-width:860px;
+  }
+  .work-media{
+    background:var(--bone-2);
+    border-bottom:1.5px solid var(--line);
+    padding:56px 48px;
+    text-align:center;
+  }
+  .work-media .big{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    line-height:1.1;
+  }
+  .work-media .tag-line{
+    margin-top:14px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+  }
+  .work-body{padding:40px 48px;}
+  .work-body p{color:var(--ink-soft); margin-bottom:20px; max-width:640px;}
+  .work-body ul{margin-bottom:30px;}
+  .work-body ul li{
+    padding:12px 0;
+    border-bottom:1px solid var(--bone-2);
+    font-size:0.95rem;
+    display:flex; align-items:center; gap:12px;
+  }
+  .work-body ul li::before{content:"✦"; font-size:0.75rem;}
+  .work-more{
+    margin-top:34px;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--ink-soft);
+  }
+
+  /* Pricing */
+  .pricing{border-bottom:1.5px solid var(--line);}
+  .pricing-card{
+    border:1.5px solid var(--line);
+    border-radius:120px;
+    text-align:center;
+    padding:72px 48px;
+    max-width:720px;
+    margin:0 auto;
+    position:relative;
+  }
+  .pricing-card .spark-mark{
+    position:absolute;
+    background:var(--bone);
+    padding:0 10px;
+    font-size:1.5rem;
+    top:-14px; left:50%; transform:translateX(-50%);
+  }
+  .pricing-card .from{
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .pricing-card .amount{
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    font-size:4.4rem;
+    line-height:1;
+    margin-bottom:18px;
+  }
+  .pricing-card p{
+    color:var(--ink-soft);
+    max-width:480px;
+    margin:0 auto 32px;
+    font-size:0.98rem;
+  }
+
+  /* Contact */
+  .contact{padding-bottom:80px;}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:56px;
+    align-items:center;
+  }
+  .contact h2{
+    font-size:clamp(2.4rem, 5.5vw, 3.8rem);
+    margin-bottom:26px;
+  }
+  .contact .contact-lede{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--ink-soft);
+    margin-bottom:38px;
+    max-width:520px;
+  }
+  .contact-card{
+    border:1.5px solid var(--line);
+    border-radius:36px;
+    padding:14px 34px;
+  }
+  .contact-row{
+    display:flex; flex-direction:column;
+    padding:22px 0;
+    border-bottom:1px solid var(--bone-2);
+  }
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row span{
+    font-size:0.72rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+  .contact-row a, .contact-row strong{
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    font-size:1.2rem;
+    letter-spacing:0.02em;
+  }
+  .contact-row a{border-bottom:1.5px solid transparent; width:fit-content; transition:border-color .2s;}
+  .contact-row a:hover{border-color:var(--ink);}
+
+  footer{
+    border-top:1.5px solid var(--line);
+    padding:28px 0;
+  }
+  .footer-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+    font-size:0.78rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--ink-soft);
+  }
+  .footer-inner .brand{font-size:1rem; color:var(--ink);}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-side{min-height:200px; border-radius:60px;}
+    .hero-side .vertical{writing-mode:horizontal-tb;}
+    .service-item{grid-template-columns:48px 1fr; }
+    .service-item p{grid-column:2;}
+    .why-grid{grid-template-columns:1fr;}
+    .why-item:nth-child(odd){border-right:none;}
+    .why-item:nth-last-child(-n+2){border-bottom:1.5px solid var(--line);}
+    .why-item:last-child{border-bottom:none;}
+    .contact-grid{grid-template-columns:1fr;}
+    .work-media, .work-body{padding-left:28px; padding-right:28px;}
+  }
+  @media (max-width:640px){
+    .nav-links{
+      position:fixed; top:66px; left:0; right:0;
+      background:var(--bone);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:24px;
+      gap:20px;
+      border-bottom:1.5px solid var(--line);
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .mobile-toggle{display:block;}
+    .nav-cta{display:none;}
+    section{padding:64px 0;}
+    .hero{padding:72px 0 56px;}
+    .pricing-card{border-radius:48px; padding:56px 28px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="brand">XYX <span>Studio</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-solid btn-sm" href="https://wa.me/351933657954" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="container">
+    <span class="eyebrow">✦ Based in the Azores — working with clients everywhere</span>
+    <div class="hero-grid">
+      <div>
+        <h1 class="display"><span class="pov">POV:</span> your customers are looking for you online — and you're not there yet.</h1>
+        <p class="lede">Websites &amp; booking systems, built for your business.</p>
+        <div class="hero-cta">
+          <a class="btn btn-solid" href="https://wa.me/351933657954" target="_blank" rel="noopener">Message on WhatsApp</a>
+          <a class="btn" href="#services">See services</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <span class="spark-mark s1">✦</span>
+        <span class="vertical">web development</span>
+        <span class="spark-mark s2">✦</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    Custom websites <span class="spark">✦</span> Booking systems <span class="spark">✦</span> Online payments <span class="spark">✦</span> E-commerce <span class="spark">✦</span> Maintenance &amp; support <span class="spark">✦</span>
+    Custom websites <span class="spark">✦</span> Booking systems <span class="spark">✦</span> Online payments <span class="spark">✦</span> E-commerce <span class="spark">✦</span> Maintenance &amp; support <span class="spark">✦</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">What's included</div>
+      <h2 class="display">Everything your website needs — <span class="serif">handled.</span></h2>
+    </div>
+    <div class="service-list">
+
+      <div class="service-item">
+        <div class="num">01</div>
+        <h3>Custom Website Development</h3>
+        <p>Fully responsive on desktop, tablet, and mobile. Modern, clean design, fast loading speeds, SEO-friendly structure, contact forms, Google Maps and social media integration.</p>
+      </div>
+
+      <div class="service-item">
+        <div class="num">02</div>
+        <h3>Booking Systems</h3>
+        <p>Perfect for restaurants, hotels &amp; guest houses, salons, barbershops, fitness coaches, consultants and service businesses. <strong>Customers book directly through your site.</strong></p>
+      </div>
+
+      <div class="service-item">
+        <div class="num">03</div>
+        <h3>Online Payments</h3>
+        <p>Secure payment integration so your customers can purchase products, pay for services, reserve appointments, and make deposits.</p>
+      </div>
+
+      <div class="service-item">
+        <div class="num">04</div>
+        <h3>E-commerce Stores</h3>
+        <p>Product catalog, shopping cart, secure checkout, order management, inventory management and payment integration — a complete store.</p>
+      </div>
+
+      <div class="service-item">
+        <div class="num">05</div>
+        <h3>Domain &amp; Website Setup<span class="note">domain registration — extra fee if you'd like one</span></h3>
+        <p>Domain registration, hosting configuration, deployment, email and DNS setup — everything connected so your website is live and ready to use.</p>
+      </div>
+
+      <div class="service-item">
+        <div class="num">06</div>
+        <h3>Maintenance &amp; Support</h3>
+        <p>Content updates, small design changes, bug fixes, security updates, performance improvements and technical support. <strong>Your website is delivered and launched in full.</strong> Starting 30 days after delivery, a maintenance &amp; support fee applies if you'd like ongoing updates or assistance.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Why work with me</div>
+      <h2 class="display">Built around your business, <span class="serif">not a template.</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><h4>Custom-built</h4><p>No generic templates — every site is designed around your business.</p></div>
+      <div class="why-item"><h4>Modern &amp; responsive</h4><p>Looks and works great on every device, every screen size.</p></div>
+      <div class="why-item"><h4>Fast delivery</h4><p>An efficient process from kickoff to launch — no agency fluff.</p></div>
+      <div class="why-item"><h4>Clear communication</h4><p>You stay in the loop through the whole project, right on WhatsApp.</p></div>
+      <div class="why-item"><h4>Ongoing support</h4><p>I'm here after launch — updates, fixes, and improvements.</p></div>
+      <div class="why-item"><h4>Tailored solutions</h4><p>Every recommendation is built around what your business actually needs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Examples of work</div>
+      <h2 class="display">See it <span class="serif">in action.</span></h2>
+    </div>
+    <div class="work-card">
+      <div class="work-media">
+        <div class="big">Growzores</div>
+        <div class="tag-line">Local shop ✦ Azores</div>
+      </div>
+      <div class="work-body">
+        <p>A small sustainable farm shop in the Azores selling fresh seasonal flowers and locally-grown produce, built in partnership with Vila Emigrante Bungalows.</p>
+        <ul>
+          <li>Online ordering for flower arrangements &amp; harvest baskets</li>
+          <li>Complimentary delivery to Vila Emigrante Bungalows</li>
+          <li>Clean, nature-inspired design with a farm-to-consumer story</li>
+        </ul>
+        <a class="btn" href="https://growzores-shop.vercel.app" target="_blank" rel="noopener">Visit live site</a>
+      </div>
+    </div>
+    <p class="work-more">More projects coming soon — every site is built and launched with the same care. ✦</p>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Pricing</div>
+      <h2 class="display">Every project gets a <span class="serif">custom quote.</span></h2>
+    </div>
+    <div class="pricing-card">
+      <span class="spark-mark">✦</span>
+      <div class="from">Typical projects start from</div>
+      <div class="amount">€500+</div>
+      <p>Larger websites, booking systems and e-commerce solutions are priced according to the features required. Maintenance plans available for businesses that want ongoing support.</p>
+      <a class="btn btn-solid" href="https://wa.me/351933657954" target="_blank" rel="noopener">Request a quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <div class="kicker">Get in touch</div>
+      <h2 class="display">Let's build <span class="serif">something.</span></h2>
+      <p class="contact-lede">Reach out on WhatsApp for the fastest response — I'll get back to you with next steps and a custom quote.</p>
+      <a class="btn btn-solid" href="https://wa.me/351933657954" target="_blank" rel="noopener">Message on WhatsApp</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-row">
+        <span>WhatsApp</span>
+        <a href="https://wa.me/351933657954" target="_blank" rel="noopener">+351 933 657 954</a>
+      </div>
+      <div class="contact-row">
+        <span>Email</span>
+        <a href="mailto:yara.patricio95@gmail.com">yara.patricio95@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span>Location</span>
+        <strong>Azores, Portugal</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span class="brand">XYX <span>Studio</span></span>
+    <span>Websites &amp; booking systems ✦ Azores</span>
+    <span>&copy; <span id="year"></span></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('mobileToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
